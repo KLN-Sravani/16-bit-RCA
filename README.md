@@ -15,8 +15,7 @@ The 16-bit Ripple Carry Adder consists of 16 full adders connected in series. Th
 
 ## 🧮 Logic Equations
 
-* Sum = $A \oplus B \oplus Cin$
-* Cout = $(A \& B) \vert{} (Cin \& (A \oplus B))$
+ \(A \oplus B \oplus C_{in}\) (A XOR B XOR Carry-In)Carry Out (\(C_{out}\)): \((A \cdot B) + (C_{in} \cdot (A \oplus B))\) (A AND B) OR (Carry-In AND (A XOR B))
 
 ## 🏗️ Block Structure
 
