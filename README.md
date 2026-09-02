@@ -1,49 +1,53 @@
-16-Bit Ripple Carry Adder
-📌 Overview
-
+## 16-Bit Ripple Carry Adder## 📌 Overview
 This project implements a 16-bit Ripple Carry Adder (RCA) using sixteen 1-bit full adders. It adds two 16-bit binary numbers and generates a 16-bit sum along with a final carry output.
+## ⚙️ Working Principle
+The 16-bit Ripple Carry Adder consists of 16 full adders connected in series. The carry output of each stage is connected to the carry input of the next stage, allowing the carry to ripple from the least significant bit (LSB) to the most significant bit (MSB).
+## 🔢 Inputs
 
-⚙️ Working Principle
+* A[15:0] – First 16-bit binary number
+* B[15:0] – Second 16-bit binary number
+* Cin – Initial carry input
 
-The 16-bit Ripple Carry Adder consists of 16 full adders connected in series. The carry output from each full adder is passed to the next stage. The carry continues to propagate from the least significant bit to the most significant bit.
+## 📤 Outputs
 
-🔢 Inputs
-A[15:0] – First 16-bit binary number
-B[15:0] – Second 16-bit binary number
-Cin – Initial carry input
-📤 Outputs
-Sum[15:0] – 16-bit addition result
-Cout – Final carry output
-🧮 Logic Equations
-Sum  = A ⊕ B ⊕ Cin
-Cout = (A & B) | (Cin & (A ⊕ B))
+* Sum[15:0] – 16-bit sum output
+* Cout – Final carry output
 
-🏗️ Block Structure
-A0  B0   → FA0   → S0   → C1
-A1  B1   → FA1   → S1   → C2
-A2  B2   → FA2   → S2   → C3
-   .        .       .
-   .        .       .
-A14 B14  → FA14  → S14  → C15
-A15 B15  → FA15  → S15  → Cout
+## 🧮 Logic Equations
 
-✨ Features
-16-bit binary addition
-Built using 16 full adders
-Supports carry input and carry output
-Simple and easy-to-understand architecture
-Demonstrates RTL and digital logic design
-⚠️ Limitation
+* Sum = $A \oplus B \oplus Cin$
+* Cout = $(A \& B) \vert{} (Cin \& (A \oplus B))$
 
-The main limitation of a Ripple Carry Adder is carry propagation delay. Since the carry must pass through each full adder sequentially, the delay increases as the bit width increases.
+## 🏗️ Block Structure
 
-🎯 Applications
-Arithmetic Logic Units (ALUs)
-Digital processors
-Calculators
-Computer arithmetic circuits
-Digital system design
-📁 Project Structure
+A[0]  B[0]  ──> FA0  ──> Sum[0]  ──> C1
+A[1]  B[1]  ──> FA1  ──> Sum[1]  ──> C2
+A[2]  B[2]  ──> FA2  ──> Sum[2]  ──> C3
+.     .         .         .          .
+.     .         .         .          .
+A[14] B[14] ──> FA14 ──> Sum[14] ──> C15
+A[15] B[15] ──> FA15 ──> Sum[15] ──> Cout
+
+## ✨ Features
+
+* 16-bit binary addition
+* Uses 16 one-bit full adders
+* Supports carry input and carry output
+* Simple combinational circuit
+* Demonstrates carry propagation
+
+## ⚠️ Limitation
+The main limitation is carry propagation delay because the carry must pass through each full adder sequentially.
+## 🎯 Applications
+
+* Arithmetic Logic Units (ALUs)
+* Digital processors
+* Calculators
+* Computer arithmetic circuits
+* Digital system design
+
+## 📁 Project Structure
+
 16-bit-ripple-carry-adder/
 ├── rtl/
 │   └── ripple_carry_adder_16bit.v
@@ -51,6 +55,14 @@ Digital system design
 │   └── ripple_carry_adder_16bit_tb.v
 └── README.md
 
-📜 License
+## 📜 License
+This project is intended for educational purposes.
+------------------------------
+If you'd like, let me know:
 
-This project is intended for educational and learning purposes.
+* If you want actual Verilog or SystemVerilog source code written for these modules
+* If you need a testbench script to simulate the adder
+* If you want to include timing constraints for synthesis
+
+I can provide the code blocks ready to be pasted into your project!
+
