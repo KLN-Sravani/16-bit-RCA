@@ -1,67 +1,93 @@
-## 16-Bit Ripple Carry Adder## 📌 Overview
-This project implements a 16-bit Ripple Carry Adder (RCA) using sixteen 1-bit full adders. It adds two 16-bit binary numbers and generates a 16-bit sum along with a final carry output.
+# 16-Bit Ripple Carry Adder
+
+## 📌 Overview
+
+This project implements a **16-bit Ripple Carry Adder (RCA)** using sixteen 1-bit full adders. It adds two 16-bit binary numbers and produces a 16-bit sum along with a final carry output.
+
 ## ⚙️ Working Principle
-The 16-bit Ripple Carry Adder consists of 16 full adders connected in series. The carry output of each stage is connected to the carry input of the next stage, allowing the carry to ripple from the least significant bit (LSB) to the most significant bit (MSB).
+
+The 16-bit Ripple Carry Adder consists of **16 full adders connected in series**. The carry output of each stage is connected to the carry input of the next stage, allowing the carry to propagate from the **Least Significant Bit (LSB)** to the **Most Significant Bit (MSB)**.
+
 ## 🔢 Inputs
 
-* A[15:0] – First 16-bit binary number
-* B[15:0] – Second 16-bit binary number
-* Cin – Initial carry input
+- `A[15:0]` – First 16-bit binary input
+- `B[15:0]` – Second 16-bit binary input
+- `Cin` – Initial carry input
 
 ## 📤 Outputs
 
-* Sum[15:0] – 16-bit sum output
-* Cout – Final carry output
+- `Sum[15:0]` – 16-bit sum output
+- `Cout` – Final carry output
 
 ## 🧮 Logic Equations
 
- \(A \oplus B \oplus C_{in}\) (A XOR B XOR Carry-In)Carry Out (\(C_{out}\)): \((A \cdot B) + (C_{in} \cdot (A \oplus B))\) (A AND B) OR (Carry-In AND (A XOR B))
+For each bit `i` of the 16-bit RCA:
+
+### Sum
+
+$$
+S_i = A_i \oplus B_i \oplus C_i
+$$
+
+### Carry
+
+$$
+C_{i+1} = A_iB_i + C_i(A_i \oplus B_i)
+$$
+
+The carry propagates sequentially through all 16 stages:
+
+$$
+C_0 \rightarrow C_1 \rightarrow C_2 \rightarrow \cdots \rightarrow C_{16}
+$$
 
 ## 🏗️ Block Structure
 
-A[0]  B[0]  ──> FA0  ──> Sum[0]  ──> C1
-A[1]  B[1]  ──> FA1  ──> Sum[1]  ──> C2
-A[2]  B[2]  ──> FA2  ──> Sum[2]  ──> C3
-.     .         .         .          .
-.     .         .         .          .
-A[14] B[14] ──> FA14 ──> Sum[14] ──> C15
-A[15] B[15] ──> FA15 ──> Sum[15] ──> Cout
+```text
+A[0]   B[0]   ──> FA0   ──> Sum[0]   ──> C1
+A[1]   B[1]   ──> FA1   ──> Sum[1]   ──> C2
+A[2]   B[2]   ──> FA2   ──> Sum[2]   ──> C3
+  .      .          .          .          .
+  .      .          .          .          .
+A[14]  B[14]  ──> FA14  ──> Sum[14]  ──> C15
+A[15]  B[15]  ──> FA15  ──> Sum[15]  ──> Cout
+```
 
 ## ✨ Features
 
-* 16-bit binary addition
-* Uses 16 one-bit full adders
-* Supports carry input and carry output
-* Simple combinational circuit
-* Demonstrates carry propagation
+- 16-bit binary addition
+- Built using 16 one-bit full adders
+- Supports carry input and carry output
+- Purely combinational design
+- Demonstrates carry propagation
+- Designed using Verilog HDL
 
 ## ⚠️ Limitation
-The main limitation is carry propagation delay because the carry must pass through each full adder sequentially.
+
+The primary limitation of a Ripple Carry Adder is **carry propagation delay**, since the carry must propagate sequentially through each full-adder stage before the final result is available.
+
 ## 🎯 Applications
 
-* Arithmetic Logic Units (ALUs)
-* Digital processors
-* Calculators
-* Computer arithmetic circuits
-* Digital system design
+- Arithmetic Logic Units (ALUs)
+- Digital processors
+- Calculators
+- Computer arithmetic circuits
+- Digital system design
 
 ## 📁 Project Structure
 
+```text
 16-bit-ripple-carry-adder/
+│
 ├── rtl/
 │   └── ripple_carry_adder_16bit.v
+│
 ├── tb/
 │   └── ripple_carry_adder_16bit_tb.v
+│
 └── README.md
+```
 
 ## 📜 License
-This project is intended for educational purposes.
-------------------------------
-If you'd like, let me know:
 
-* If you want actual Verilog or SystemVerilog source code written for these modules
-* If you need a testbench script to simulate the adder
-* If you want to include timing constraints for synthesis
-
-I can provide the code blocks ready to be pasted into your project!
-
+This project is intended for **educational and academic purposes**.
